@@ -7,10 +7,7 @@
       @updateItem="listStore.updateItem"
       @removeItem="listStore.removeItem"
     />
-    <EditableListItemPlaceholder
-      ref="placeholderListItem"
-      @addItem="addNewItem"
-    />
+    <EditableListItemPlaceholder @addItem="addNewItem" />
   </ul>
 </template>
 
