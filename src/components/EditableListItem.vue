@@ -33,7 +33,6 @@ const onInput = debounce((value: string) => {
 </script>
 
 <style scoped lang="scss">
-@import '@/assets/styles/variables';
 @import '@/assets/styles/extends/list.extends';
 
 .list-item {
