@@ -1,12 +1,11 @@
 <template>
-  <ul>
-    <li v-for="item in items" :key="item.id">{{ item.title }}</li>
-  </ul>
+  <Component :is="BaseList" :items="items" />
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useListStore } from '@/stores/list';
+import BaseList from '@/components/base/BaseList.vue';
 
 const listStore = useListStore();
 
@@ -15,4 +14,5 @@ const items = computed(() => listStore.items);
 
 <style lang="scss">
 @import '@/assets/styles/base';
+@import '@/assets/styles/normalize';
 </style>
