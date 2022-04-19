@@ -20,13 +20,23 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: 'updateItem', item: ListItem): void;
+  (e: 'removeItem', itemId: string): void;
 }>();
 
 const inputValue = ref(props.item.title);
 
-const onInput = debounce((value: string) => {
+const onInput = (value: string) => {
   inputValue.value = value;
 
+  if (value) {
+    updateItem(value);
+    return;
+  }
+
+  emit('removeItem', props.item.id);
+};
+
+const updateItem = debounce((value: string) => {
   const updatedItem = {
     id: props.item.id,
     title: value,
