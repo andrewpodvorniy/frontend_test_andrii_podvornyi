@@ -5,7 +5,7 @@
       :key="item.id"
       :item="item"
       @updateItem="listStore.updateItem"
-      @removeItem="removeItem"
+      @removeItem="listStore.removeItem"
     />
     <EditableListItemPlaceholder
       ref="placeholderListItem"
@@ -35,10 +35,6 @@ const listStore = useListStore();
 
 const addNewItem = (title: string) =>
   listStore.addItem({ id: getUniqueId(), title });
-
-const removeItem = (itemId: string) => {
-  listStore.removeItem(itemId);
-};
 </script>
 
 <style scoped lang="scss">
