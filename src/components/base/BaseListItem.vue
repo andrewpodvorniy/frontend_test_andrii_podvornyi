@@ -1,14 +1,8 @@
 <template>
   <li class="list-item">
-    {{ title }}
+    <p class="list-item__title">{{ title }}</p>
   </li>
 </template>
-
-<script lang="ts">
-export default {
-  name: 'BaseListItem',
-};
-</script>
 
 <script setup lang="ts">
 defineProps<{
@@ -22,5 +16,13 @@ defineProps<{
 
 .list-item {
   @extend #list-item;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    min-height: toRem(46);
+    padding: 0 toRem(15);
+    color: $grey-5;
+  }
 }
 </style>
