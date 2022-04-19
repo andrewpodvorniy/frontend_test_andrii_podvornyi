@@ -1,6 +1,10 @@
 <template>
   <li class="list-item">
-    <BaseTextField :model-value="inputValue" @update:model-value="onInput" />
+    <BaseTextField
+      placeholder="Enter list item title..."
+      :model-value="inputValue"
+      @update:model-value="onInput"
+    />
   </li>
 </template>
 
