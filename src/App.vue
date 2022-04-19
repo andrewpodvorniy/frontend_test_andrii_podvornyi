@@ -1,6 +1,6 @@
 <template>
   <PageLayout>
-    <!-- Added KeepAlive to handle debounced input event on fast exit -->
+    <!-- Added KeepAlive to handle debounced input event on fast exit, and to keep new item value -->
     <KeepAlive include="EditableList">
       <Component :is="isEditingMode ? EditableList : BaseList" :items="items" />
     </KeepAlive>

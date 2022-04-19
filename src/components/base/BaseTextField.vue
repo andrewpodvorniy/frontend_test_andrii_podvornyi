@@ -45,5 +45,9 @@ const handleInput = (event: Event) =>
     box-shadow: 0 0 0 3px $blue-2;
     outline: none;
   }
+
+  &::placeholder {
+    color: $grey-3;
+  }
 }
 </style>
