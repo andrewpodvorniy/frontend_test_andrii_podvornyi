@@ -1,6 +1,11 @@
 <template>
   <ul class="list">
-    <BaseListItem v-for="item in items" :key="item.id" :title="item.title" />
+    <TransitionGroup name="list-animation" v-if="items.length">
+      <BaseListItem v-for="item in items" :key="item.id" :title="item.title" />
+    </TransitionGroup>
+    <li v-else>
+      <p class="list__no-data">No data found</p>
+    </li>
   </ul>
 </template>
 
@@ -21,8 +26,14 @@ defineProps<{
 
 <style scoped lang="scss">
 @import '@/assets/styles/extends/list.extends';
+@import '@/assets/styles/variables';
 
 .list {
   @extend #list;
+
+  &__no-data {
+    color: $grey-4;
+    text-align: center;
+  }
 }
 </style>
