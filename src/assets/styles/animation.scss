@@ -1,0 +1,24 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.list-animation-move,
+.list-animation-enter-active,
+.list-animation-leave-active {
+  transition: all 0.5s ease;
+}
+.list-animation-enter-from,
+.list-animation-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.list-animation-leave-active {
+  position: absolute;
+}

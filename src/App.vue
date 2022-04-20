@@ -1,9 +1,14 @@
 <template>
   <PageLayout>
     <!-- Added KeepAlive to handle debounced input event on fast exit, and to keep new item value -->
-    <KeepAlive include="EditableList">
-      <Component :is="isEditingMode ? EditableList : BaseList" :items="items" />
-    </KeepAlive>
+    <Transition name="fade" mode="out-in">
+      <KeepAlive include="EditableList">
+        <Component
+          :is="isEditingMode ? EditableList : BaseList"
+          :items="items"
+        />
+      </KeepAlive>
+    </Transition>
   </PageLayout>
 </template>
 
@@ -25,4 +30,5 @@ const isEditingMode = computed(() => modeStore.isEditing);
 <style lang="scss">
 @import '@/assets/styles/base';
 @import '@/assets/styles/normalize';
+@import '@/assets/styles/animation';
 </style>

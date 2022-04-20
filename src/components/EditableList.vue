@@ -1,13 +1,15 @@
 <template>
   <ul class="list">
-    <EditableListItem
-      v-for="item in items"
-      :key="item.id"
-      :item="item"
-      @updateItem="listStore.updateItem"
-      @removeItem="listStore.removeItem"
-    />
-    <EditableListItemPlaceholder @addItem="addNewItem" />
+    <TransitionGroup name="list-animation">
+      <EditableListItem
+        v-for="item in items"
+        :key="item.id"
+        :item="item"
+        @updateItem="listStore.updateItem"
+        @removeItem="listStore.removeItem"
+      />
+      <EditableListItemPlaceholder key="_placeholder" @addItem="addNewItem" />
+    </TransitionGroup>
   </ul>
 </template>
 
