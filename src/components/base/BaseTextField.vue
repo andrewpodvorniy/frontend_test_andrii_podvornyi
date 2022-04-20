@@ -2,24 +2,39 @@
   <input
     type="text"
     class="text-field"
-    :placeholder="placeholder"
-    :value="modelValue"
+    ref="textFieldRef"
+    :placeholder="props.placeholder"
+    :value="props.modelValue"
+    :readonly="isReadonly"
     @input="handleInput"
   />
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { ref, watch } from 'vue';
+
+const props = defineProps<{
   modelValue: string;
   placeholder?: string;
+  isReadonly?: boolean;
+  triggerFocus?: boolean;
 }>();
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
 }>();
 
+const textFieldRef = ref<HTMLInputElement | null>(null);
+
 const handleInput = (event: Event) =>
   emit('update:modelValue', (event.target as HTMLInputElement).value);
+
+watch(
+  () => props.triggerFocus,
+  () => {
+    textFieldRef.value?.focus();
+  }
+);
 </script>
 
 <style lang="scss">
@@ -28,26 +43,23 @@ const handleInput = (event: Event) =>
 
 .text-field {
   width: 100%;
-  height: toRem(46);
+  height: $default-interactive-elements-height;
   padding: toRem(10) toRem(14);
-  color: $grey-5;
+  color: $grey-4;
   background-color: $white-1;
   border-radius: $default-border-radius;
-  border: 1px solid $grey-3;
+  border: 0;
+  box-shadow: none;
   font-size: toRem(16);
-  font-family: inherit;
-  box-shadow: 0 1px 1px 1px $grey-1;
   transition: color $hover-duration, background-color $hover-duration,
     border-color $hover-duration, box-shadow $hover-duration;
 
   &:focus {
-    border-color: $blue-1;
-    box-shadow: 0 0 0 3px $blue-2;
     outline: none;
   }
 
   &::placeholder {
-    color: $grey-3;
+    color: $grey-2;
   }
 }
 </style>

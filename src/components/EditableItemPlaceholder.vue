@@ -1,17 +1,20 @@
 <template>
-  <li class="list-item-placeholder">
-    <BaseTextField
-      placeholder="Enter list item title..."
-      v-model="inputValue"
-      @keyup="onKeyUp"
-      v-focus
-    />
-  </li>
+  <BaseTextField
+    placeholder="Enter list item title..."
+    :trigger-focus="triggerFocus"
+    v-model="inputValue"
+    v-focus
+    @keyup="onKeyUp"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import BaseTextField from '@/components/base/BaseTextField.vue';
+
+defineProps<{
+  triggerFocus?: boolean;
+}>();
 
 const emit = defineEmits<{
   (e: 'addItem', itemTitle: string): void;
@@ -26,11 +29,3 @@ const onKeyUp = (event: KeyboardEvent) => {
   }
 };
 </script>
-
-<style scoped lang="scss">
-@import '@/assets/styles/extends/list.extends';
-
-.list-item-placeholder {
-  @extend #list-item;
-}
-</style>

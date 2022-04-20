@@ -1,29 +1,31 @@
 <template>
-  <ul class="list">
+  <BaseList>
     <TransitionGroup name="list-animation">
-      <EditableListItem
-        v-for="item in items"
-        :key="item.id"
-        :item="item"
-        @updateItem="listStore.updateItem"
-        @removeItem="listStore.removeItem"
-      />
-      <EditableListItemPlaceholder key="_placeholder" @addItem="addNewItem" />
+      <BaseListItem v-for="item in items" :key="item.id">
+        <EditableItem
+          :item="item"
+          @update-item="listStore.updateItem"
+          @remove-item="removeItem"
+        />
+      </BaseListItem>
+      <BaseListItem key="_placeholder">
+        <EditableItemPlaceholder
+          @add-item="addNewItem"
+          :trigger-focus="triggerFocus"
+        />
+      </BaseListItem>
     </TransitionGroup>
-  </ul>
+  </BaseList>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'EditableList',
-};
-</script>
-
 <script setup lang="ts">
+import { ref } from 'vue';
 import type { ListItem } from '@/types/list-item.type';
 import { useListStore } from '@/stores/list';
-import EditableListItem from '@/components/EditableListItem.vue';
-import EditableListItemPlaceholder from '@/components/EditableListItemPlaceholder.vue';
+import EditableItem from '@/components/EditableItem.vue';
+import EditableItemPlaceholder from '@/components/EditableItemPlaceholder.vue';
+import BaseList from '@/components/base/BaseList.vue';
+import BaseListItem from '@/components/base/BaseListItem.vue';
 import { getUniqueId } from '@/helpers/unique-id.helper';
 
 defineProps<{
@@ -32,14 +34,13 @@ defineProps<{
 
 const listStore = useListStore();
 
+const triggerFocus = ref(false);
+
 const addNewItem = (title: string) =>
   listStore.addItem({ id: getUniqueId(), title });
+
+const removeItem = (itemId: string) => {
+  triggerFocus.value = !triggerFocus.value;
+  listStore.removeItem(itemId);
+};
 </script>
-
-<style scoped lang="scss">
-@import '@/assets/styles/extends/list.extends';
-
-.list {
-  @extend #list;
-}
-</style>

@@ -1,32 +1,35 @@
 import { defineStore } from 'pinia';
 
 import type { ListItem } from '@/types/list-item.type';
+import listItemsService from '@/services/list-items.service';
+import { ref } from 'vue';
 
-const initialItemsValue: ListItem[] = [
-  { id: '1', title: 'List item 1' },
-  { id: '2', title: 'List item 2' },
-];
+export const useListStore = defineStore('list', () => {
+  const items = ref<ListItem[]>([]);
 
-export const useListStore = defineStore({
-  id: 'list',
-  state: () => ({
-    items: initialItemsValue,
-  }),
-  actions: {
-    addItem(item: ListItem) {
-      this.items.push(item);
-    },
-    updateItem(updatedItem: ListItem) {
-      const updatedItemIndex = this.items.findIndex(
-        (item) => item.id === updatedItem.id
-      );
+  const savedItems = listItemsService.fetchItems();
 
-      if (updatedItemIndex < 0) return;
+  if (savedItems) {
+    items.value = savedItems;
+  }
 
-      this.items.splice(updatedItemIndex, 1, updatedItem);
-    },
-    removeItem(itemId: string) {
-      this.items = this.items.filter((item) => item.id !== itemId);
-    },
-  },
+  const addItem = (item: ListItem) => {
+    items.value.push(item);
+  };
+
+  const updateItem = (updatedItem: ListItem) => {
+    const updatedItemIndex = items.value.findIndex(
+      (item) => item.id === updatedItem.id
+    );
+
+    if (updatedItemIndex < 0) return;
+
+    items.value.splice(updatedItemIndex, 1, updatedItem);
+  };
+
+  const removeItem = (itemId: string) => {
+    items.value = items.value.filter((item) => item.id !== itemId);
+  };
+
+  return { items, addItem, updateItem, removeItem };
 });

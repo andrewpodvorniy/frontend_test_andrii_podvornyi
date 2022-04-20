@@ -56,13 +56,13 @@ const handleChange = (event: Event) =>
       color: $dark-1;
 
       #{$enabled-class} & {
-        color: $grey-3;
+        color: $grey-2;
       }
     }
 
     &:last-child {
       margin-left: $label-indent;
-      color: $grey-3;
+      color: $grey-2;
 
       #{$enabled-class} & {
         color: $dark-1;
@@ -77,7 +77,7 @@ const handleChange = (event: Event) =>
     height: toRem(26);
     padding: toRem(2);
     background-color: $white-1;
-    border: 1px solid $grey-4;
+    border: 1px solid $grey-3;
     border-radius: 30px;
     transition: background-color 0.3s;
     cursor: pointer;
@@ -97,7 +97,7 @@ const handleChange = (event: Event) =>
     display: block;
     width: 50%;
     height: 100%;
-    background-color: $grey-4;
+    background-color: $grey-3;
     border-radius: 50%;
     box-shadow: none;
     transition: transform 0.3s ease-in-out, background-color 0.3s,
