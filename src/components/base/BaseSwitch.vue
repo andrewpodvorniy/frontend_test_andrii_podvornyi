@@ -49,12 +49,24 @@ const handleChange = (event: Event) =>
   &__label {
     $label-indent: toRem(10);
 
+    transition: color $hover-duration;
+
     &:first-child {
       margin-right: $label-indent;
+      color: $dark-1;
+
+      #{$enabled-class} & {
+        color: $grey-3;
+      }
     }
 
     &:last-child {
       margin-left: $label-indent;
+      color: $grey-3;
+
+      #{$enabled-class} & {
+        color: $dark-1;
+      }
     }
   }
 
@@ -69,11 +81,6 @@ const handleChange = (event: Event) =>
     border-radius: 30px;
     transition: background-color 0.3s;
     cursor: pointer;
-
-    #{$enabled-class} & {
-      background-color: $blue-1;
-      border-color: $blue-1;
-    }
   }
 
   &__input {
@@ -97,8 +104,6 @@ const handleChange = (event: Event) =>
       box-shadow 0.3s;
 
     #{$enabled-class} & {
-      background-color: $white-1;
-      box-shadow: 1px 1px 1px 1px rgb(24, 69, 187);
       transform: translateX(100%);
     }
   }
