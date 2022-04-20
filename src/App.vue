@@ -23,7 +23,8 @@ const isEditingMode = computed(() => modeStore.isEditing);
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/base';
+@import '@/assets/styles/fonts';
 @import '@/assets/styles/normalize';
+@import '@/assets/styles/base';
 @import '@/assets/styles/animation';
 </style>
