@@ -6,7 +6,7 @@
       </BaseListItem>
     </template>
     <li v-else>
-      <p>No data found</p>
+      <p class="no-data">No data found</p>
     </li>
   </BaseList>
 </template>
@@ -21,3 +21,12 @@ defineProps<{
   items: ListItem[];
 }>();
 </script>
+
+<style scoped lang="scss">
+@import '@/assets/styles/variables';
+
+.no-data {
+  color: $grey-3;
+  text-align: center;
+}
+</style>

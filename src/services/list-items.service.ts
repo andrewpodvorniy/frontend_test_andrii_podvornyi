@@ -3,8 +3,9 @@ import { SAVED_ITEMS_LOCAL_STORAGE_KEY } from '@/constants/local-storage.constan
 import localStorageService from '@/services/local-storage.service';
 
 const initialList = [
-  { id: '1', title: 'List item 1' },
-  { id: '2', title: 'List item 2' },
+  { id: '1', title: 'Item 1' },
+  { id: '2', title: 'Item 2' },
+  { id: '3', title: 'Item 3' },
 ];
 
 const listItemsService = {
