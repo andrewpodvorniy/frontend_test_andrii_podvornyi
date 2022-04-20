@@ -3,7 +3,7 @@ import { createPinia } from 'pinia';
 
 import customDirectives from '@/directives';
 
-import App from './App.vue';
+import App from '@/App.vue';
 
 const app = createApp(App);
 

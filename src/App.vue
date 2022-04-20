@@ -29,5 +29,4 @@ listStore.fetchItems();
 @use '@/assets/styles/base';
 @use '@/assets/styles/normalize';
 @use '@/assets/styles/animation';
-@use '@/assets/styles/variables';
 </style>

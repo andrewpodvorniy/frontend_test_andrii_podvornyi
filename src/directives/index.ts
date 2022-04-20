@@ -1,4 +1,3 @@
-import VEnterClick from './v-trigger-enter';
-import VFocus from './v-focus';
+import VFocus from '@/directives/v-focus';
 
-export default [VEnterClick, VFocus];
+export default [VFocus];
