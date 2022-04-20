@@ -36,28 +36,29 @@ watch(
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/functions';
-@import '@/assets/styles/variables';
+@use '@/assets/styles/functions';
+@use '@/assets/styles/variables';
 
 .text-field {
   width: 100%;
-  height: $default-interactive-elements-height;
-  padding: toRem(10) toRem(14);
-  color: $grey-4;
-  background-color: $white-1;
-  border-radius: $default-border-radius;
+  height: variables.$default-interactive-elements-height;
+  padding: functions.toRem(10) functions.toRem(14);
+  color: variables.$grey-4;
+  background-color: variables.$white-1;
+  border-radius: variables.$default-border-radius;
   border: 0;
   box-shadow: none;
-  font-size: toRem(16);
-  transition: color $hover-duration, background-color $hover-duration,
-    border-color $hover-duration, box-shadow $hover-duration;
+  font-size: functions.toRem(16);
+  transition: color variables.$hover-duration,
+    background-color variables.$hover-duration,
+    border-color variables.$hover-duration, box-shadow variables.$hover-duration;
 
   &:focus {
     outline: none;
   }
 
   &::placeholder {
-    color: $grey-2;
+    color: variables.$grey-2;
   }
 }
 </style>

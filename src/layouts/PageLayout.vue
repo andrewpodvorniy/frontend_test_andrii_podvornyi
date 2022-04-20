@@ -12,7 +12,7 @@ import TheHeader from '@/components/TheHeader.vue';
 </script>
 
 <style scoped lang="scss">
-@import '@/assets/styles/functions';
+@use '@/assets/styles/functions';
 
 .layout {
   &__header {
@@ -24,7 +24,7 @@ import TheHeader from '@/components/TheHeader.vue';
 
   &__body {
     flex: 1;
-    padding: toRem(20);
+    padding: functions.toRem(20);
   }
 }
 </style>

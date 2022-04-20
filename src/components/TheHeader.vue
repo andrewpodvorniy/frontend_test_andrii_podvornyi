@@ -26,20 +26,20 @@ const isEditingMode = computed(() => modeStore.isEditing);
 </script>
 
 <style scoped lang="scss">
-@import '@/assets/styles/functions';
-@import '@/assets/styles/variables';
+@use '@/assets/styles/functions';
+@use '@/assets/styles/variables';
 
 .header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: toRem(20);
-  background-color: $white-1;
-  box-shadow: 0 0 10px 1px $grey-2;
+  padding: functions.toRem(20);
+  background-color: variables.$white-1;
+  box-shadow: 0 0 10px 1px variables.$grey-2;
 
   &__controls {
     * + * {
-      margin-left: toRem(30);
+      margin-left: functions.toRem(30);
     }
   }
 }

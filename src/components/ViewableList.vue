@@ -23,10 +23,10 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-@import '@/assets/styles/variables';
+@use '@/assets/styles/variables';
 
 .no-data {
-  color: $grey-3;
+  color: variables.$grey-3;
   text-align: center;
 }
 </style>

@@ -1,11 +1,11 @@
-@import "@/assets/styles/functions";
-@import "@/assets/styles/variables";
+@use "@/assets/styles/functions";
+@use "@/assets/styles/variables";
 
 body {
-  color: $dark-1;
-  background-color: $white-2;
+  color: variables.$dark-1;
+  background-color: variables.$white-2;
   font-family: 'Open Sans', sans-serif;
-  font-size: toRem(16);
+  font-size: functions.toRem(16);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
