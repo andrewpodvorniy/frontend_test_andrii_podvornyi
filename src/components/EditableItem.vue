@@ -1,11 +1,10 @@
 <template>
-  <li class="list-item">
-    <BaseTextField
-      placeholder="Enter list item title..."
-      :model-value="inputValue"
-      @update:model-value="onInput"
-    />
-  </li>
+  <BaseTextField
+    placeholder="Enter list item title..."
+    :is-readonly="props.isReadonly"
+    :model-value="inputValue"
+    @update:model-value="onInput"
+  />
 </template>
 
 <script setup lang="ts">
@@ -16,6 +15,7 @@ import BaseTextField from '@/components/base/BaseTextField.vue';
 
 const props = defineProps<{
   item: ListItem;
+  isReadonly?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -45,11 +45,3 @@ const updateItem = debounce((value: string) => {
   emit('updateItem', updatedItem);
 }, 300);
 </script>
-
-<style scoped lang="scss">
-@import '@/assets/styles/extends/list.extends';
-
-.list-item {
-  @extend #list-item;
-}
-</style>

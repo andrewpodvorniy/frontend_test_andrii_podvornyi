@@ -1,14 +1,9 @@
 <template>
   <PageLayout>
-    <!-- Added KeepAlive to handle debounced input event on fast exit, and to keep new item value -->
-    <Transition name="fade" mode="out-in">
-      <KeepAlive include="EditableList">
-        <Component
-          :is="isEditingMode ? EditableList : BaseList"
-          :items="items"
-        />
-      </KeepAlive>
-    </Transition>
+    <Component
+      :is="isEditingMode ? EditableList : ViewableList"
+      :items="items"
+    />
   </PageLayout>
 </template>
 
@@ -17,8 +12,8 @@ import { computed } from 'vue';
 import { useListStore } from '@/stores/list';
 import { useModeStore } from '@/stores/mode';
 import PageLayout from '@/layouts/PageLayout.vue';
-import BaseList from '@/components/base/BaseList.vue';
 import EditableList from '@/components/EditableList.vue';
+import ViewableList from '@/components/ViewableList.vue';
 
 const listStore = useListStore();
 const modeStore = useModeStore();

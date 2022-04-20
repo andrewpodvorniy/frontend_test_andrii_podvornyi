@@ -1,6 +1,6 @@
 <template>
   <section class="layout">
-    <Header class="layout__header" />
+    <TheHeader class="layout__header" />
     <main class="layout__body">
       <slot />
     </main>
@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import Header from '@/components/Header.vue';
+import TheHeader from '@/components/TheHeader.vue';
 </script>
 
 <style scoped lang="scss">
