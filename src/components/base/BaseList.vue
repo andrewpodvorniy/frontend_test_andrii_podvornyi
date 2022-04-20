@@ -5,11 +5,11 @@
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/styles/functions';
+@use '@/assets/styles/functions';
 
 .list {
   width: 100%;
-  max-width: toRem(500);
+  max-width: functions.toRem(500);
   margin: 0 auto;
   padding: 20px;
 }

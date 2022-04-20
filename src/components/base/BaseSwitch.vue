@@ -31,8 +31,8 @@ const handleChange = (event: Event) =>
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/functions';
-@import '@/assets/styles/variables';
+@use '@/assets/styles/functions';
+@use '@/assets/styles/variables';
 
 .switch {
   $enabled-class: '';
@@ -47,25 +47,25 @@ const handleChange = (event: Event) =>
   }
 
   &__label {
-    $label-indent: toRem(10);
+    $label-indent: functions.toRem(10);
 
-    transition: color $hover-duration;
+    transition: color variables.$hover-duration;
 
     &:first-child {
       margin-right: $label-indent;
-      color: $dark-1;
+      color: variables.$dark-1;
 
       #{$enabled-class} & {
-        color: $grey-2;
+        color: variables.$grey-2;
       }
     }
 
     &:last-child {
       margin-left: $label-indent;
-      color: $grey-2;
+      color: variables.$grey-2;
 
       #{$enabled-class} & {
-        color: $dark-1;
+        color: variables.$dark-1;
       }
     }
   }
@@ -73,11 +73,11 @@ const handleChange = (event: Event) =>
   &__slider {
     position: relative;
     display: block;
-    width: toRem(46);
-    height: toRem(26);
-    padding: toRem(2);
-    background-color: $white-1;
-    border: 1px solid $grey-3;
+    width: functions.toRem(46);
+    height: functions.toRem(26);
+    padding: functions.toRem(2);
+    background-color: variables.$white-1;
+    border: 1px solid variables.$grey-3;
     border-radius: 30px;
     transition: background-color 0.3s;
     cursor: pointer;
@@ -97,11 +97,12 @@ const handleChange = (event: Event) =>
     display: block;
     width: 50%;
     height: 100%;
-    background-color: $grey-3;
+    background-color: variables.$grey-3;
     border-radius: 50%;
     box-shadow: none;
-    transition: transform 0.3s ease-in-out, background-color 0.3s,
-      box-shadow 0.3s;
+    transition: transform variables.$hover-duration ease-in-out,
+      background-color variables.$hover-duration,
+      box-shadow variables.$hover-duration;
 
     #{$enabled-class} & {
       transform: translateX(100%);

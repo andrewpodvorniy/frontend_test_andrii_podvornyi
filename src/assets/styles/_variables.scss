@@ -1,4 +1,4 @@
-@import "functions";
+@use "@/assets/styles/functions";
 
 // Colors
 $white-1: #fff;
@@ -19,5 +19,5 @@ $dark-1: #2b303f;
 $hover-duration: 300ms;
 
 // Sizes
-$default-interactive-elements-height: toRem(46);
+$default-interactive-elements-height: functions.toRem(46);
 $default-border-radius: 12px;
