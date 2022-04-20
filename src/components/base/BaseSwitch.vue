@@ -7,6 +7,7 @@
         class="switch__input"
         :checked="modelValue"
         @change="handleChange"
+        v-trigger-enter
       />
       <span class="switch__circle" />
     </span>
