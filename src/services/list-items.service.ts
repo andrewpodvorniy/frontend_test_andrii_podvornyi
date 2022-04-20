@@ -1,6 +1,6 @@
 import type { ListItem } from '@/types/list-item.type';
 import { SAVED_ITEMS_LOCAL_STORAGE_KEY } from '@/constants/local-storage.constants';
-import localStorageService from '@/services/local-storage.service';
+import type { ILocalStorageService } from '@/types/local-storage-service.type';
 
 const initialList = [
   { id: '1', title: 'Item 1' },
@@ -8,17 +8,20 @@ const initialList = [
   { id: '3', title: 'Item 3' },
 ];
 
-const listItemsService = {
+class ListItemsService {
+  constructor(private _localStorageService: ILocalStorageService) {}
+
   fetchItems(): ListItem[] {
-    const data = localStorageService.getData<ListItem[]>(
+    const data = this._localStorageService.getData<ListItem[]>(
       SAVED_ITEMS_LOCAL_STORAGE_KEY
     );
 
     return data ?? initialList;
-  },
-  saveItems(data: ListItem[]) {
-    localStorageService.setData(SAVED_ITEMS_LOCAL_STORAGE_KEY, data);
-  },
-};
+  }
 
-export default listItemsService;
+  saveItems(data: ListItem[]) {
+    this._localStorageService.setData(SAVED_ITEMS_LOCAL_STORAGE_KEY, data);
+  }
+}
+
+export default ListItemsService;
