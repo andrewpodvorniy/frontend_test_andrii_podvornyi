@@ -31,9 +31,7 @@ const handleInput = (event: Event) =>
 
 watch(
   () => props.triggerFocus,
-  () => {
-    textFieldRef.value?.focus();
-  }
+  () => textFieldRef.value?.focus()
 );
 </script>
 
