@@ -1,37 +1,40 @@
 import { defineStore } from 'pinia';
 
 import type { ListItem } from '@/types/list-item.type';
-import listItemsService from '@/services/list-items.service';
-import { ref } from 'vue';
+import ListItemsService from '@/services/list-items.service';
+import localStorageService from '@/services/local-storage.service';
 
-export const useListStore = defineStore('list', () => {
-  const items = ref<ListItem[]>([]);
+interface ListProperties {
+  items: ListItem[];
+}
 
-  const savedItems = listItemsService.fetchItems();
+export const useListStore = defineStore('list', {
+  state: (): ListProperties => ({
+    items: [],
+  }),
+  actions: {
+    addItem(item: ListItem) {
+      this.items.push(item);
+    },
+    updateItem(updatedItem: ListItem) {
+      const updatedItemIndex = this.items.findIndex(
+        (item) => item.id === updatedItem.id
+      );
 
-  if (savedItems) {
-    items.value = savedItems;
-  }
+      if (updatedItemIndex < 0) return;
 
-  const addItem = (item: ListItem) => {
-    items.value.push(item);
-  };
-
-  const updateItem = (updatedItem: ListItem) => {
-    const updatedItemIndex = items.value.findIndex(
-      (item) => item.id === updatedItem.id
-    );
-
-    if (updatedItemIndex < 0) return;
-
-    items.value.splice(updatedItemIndex, 1, updatedItem);
-  };
-
-  const removeItem = (itemId: string) => {
-    items.value = items.value.filter((item) => item.id !== itemId);
-  };
-
-  const saveItems = () => listItemsService.saveItems(items.value);
-
-  return { items, addItem, updateItem, removeItem, saveItems };
+      this.items.splice(updatedItemIndex, 1, updatedItem);
+    },
+    removeItem(itemId: string) {
+      this.items = this.items.filter((item) => item.id !== itemId);
+    },
+    saveItems() {
+      const listItemsService = new ListItemsService(localStorageService);
+      listItemsService.saveItems(this.items);
+    },
+    fetchItems() {
+      const listItemsService = new ListItemsService(localStorageService);
+      this.items = listItemsService.fetchItems();
+    },
+  },
 });

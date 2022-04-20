@@ -20,6 +20,8 @@ const modeStore = useModeStore();
 
 const items = computed(() => listStore.items);
 const isEditingMode = computed(() => modeStore.isEditing);
+
+listStore.fetchItems();
 </script>
 
 <style lang="scss">
