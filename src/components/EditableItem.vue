@@ -2,7 +2,7 @@
   <BaseTextField
     placeholder="Enter list item title..."
     :is-readonly="props.isReadonly"
-    :model-value="inputValue"
+    v-model="inputValue"
     @update:model-value="onInput"
   />
 </template>
@@ -26,8 +26,6 @@ const emit = defineEmits<{
 const inputValue = ref(props.item.title);
 
 const onInput = (value: string) => {
-  inputValue.value = value;
-
   if (value) {
     updateItem(value);
     return;
