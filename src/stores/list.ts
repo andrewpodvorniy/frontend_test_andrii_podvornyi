@@ -31,5 +31,7 @@ export const useListStore = defineStore('list', () => {
     items.value = items.value.filter((item) => item.id !== itemId);
   };
 
-  return { items, addItem, updateItem, removeItem };
+  const saveItems = () => listItemsService.saveItems(items.value);
+
+  return { items, addItem, updateItem, removeItem, saveItems };
 });

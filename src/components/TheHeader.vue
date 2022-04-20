@@ -7,7 +7,7 @@
         disabled-value="View"
         enabled-value="Edit"
       />
-      <BaseButton @click="saveData">Save</BaseButton>
+      <BaseButton @click="listStore.saveItems">Save</BaseButton>
     </div>
   </header>
 </template>
@@ -18,13 +18,11 @@ import { useListStore } from '@/stores/list';
 import { useModeStore } from '@/stores/mode';
 import BaseSwitch from '@/components/base/BaseSwitch.vue';
 import BaseButton from '@/components/base/BaseButton.vue';
-import listItemsService from '@/services/list-items.service';
 
 const listStore = useListStore();
 const modeStore = useModeStore();
 
 const isEditingMode = computed(() => modeStore.isEditing);
-const saveData = () => listItemsService.saveItems(listStore.items);
 </script>
 
 <style scoped lang="scss">
